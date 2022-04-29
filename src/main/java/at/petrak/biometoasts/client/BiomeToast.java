@@ -45,6 +45,6 @@ public record BiomeToast(BiomeThumbnail thumbnail) implements Toast {
         if (biomeID == null || !biomeID.equals(thumbnail.biomeName())) {
             return Visibility.HIDE;
         }
-        return pTimeSinceLastVisible >= 5000L ? Toast.Visibility.HIDE : Toast.Visibility.SHOW;
+        return pTimeSinceLastVisible >= 3000L ? Toast.Visibility.HIDE : Toast.Visibility.SHOW;
     }
 }

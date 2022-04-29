@@ -6,9 +6,9 @@ license="MIT"
 # The modid of the mod
 modId="biometoasts" #mandatory
 version="${file.jarVersion}" #mandatory
-displayName="Template Mod" #mandatory
+displayName="Biome Toasts" #mandatory
 logoFile="logo.png"
-credits="Falkory for her lovely texture work" #optional
+credits="The Minecraft wiki for the biome icons" #optional
 # A text field displayed in the mod UI
 authors="petrakat" #optional
 # The description text for the mod (multi line!) (#mandatory)
