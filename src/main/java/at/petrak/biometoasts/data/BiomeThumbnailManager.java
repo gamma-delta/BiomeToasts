@@ -1,4 +1,4 @@
-package at.petrak.biometoasts.datagen;
+package at.petrak.biometoasts.data;
 
 import at.petrak.biometoasts.BiomeToastsMod;
 import at.petrak.biometoasts.client.BiomeThumbnail;

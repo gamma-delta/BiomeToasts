@@ -1,24 +1,15 @@
 package at.petrak.biometoasts;
 
-import at.petrak.biometoasts.client.BiomeToast;
 import at.petrak.biometoasts.client.MovementTracker;
-import at.petrak.biometoasts.datagen.BiomeThumbnailManager;
+import at.petrak.biometoasts.data.BiomeThumbnailManager;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -36,7 +27,7 @@ public class BiomeToastsMod {
         // For everything else
         var evBus = MinecraftForge.EVENT_BUS;
 
-        evBus.register(BiomeToastsMod.class);
+        modBus.register(BiomeToastsMod.class);
         evBus.register(MovementTracker.class);
     }
 
@@ -45,7 +36,7 @@ public class BiomeToastsMod {
     }
 
     @SubscribeEvent
-    public static void initResourceListeners(AddReloadListenerEvent evt) {
-        evt.addListener(THUMBNAIL_MANAGER);
+    public static void initResourceListeners(RegisterClientReloadListenersEvent evt) {
+        evt.registerReloadListener(THUMBNAIL_MANAGER);
     }
 }
