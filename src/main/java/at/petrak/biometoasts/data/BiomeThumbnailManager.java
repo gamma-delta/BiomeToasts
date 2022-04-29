@@ -33,6 +33,7 @@ public class BiomeThumbnailManager extends SimplePreparableReloadListener<Map<Re
         if (this.thumbnails.containsKey(id)) {
             return this.thumbnails.get(id);
         } else {
+            BiomeToastsMod.LOGGER.warn("Tried to get a thumbnail for {} but one wasn't supplied", id);
             return new BiomeThumbnail(id, new ThumbnailIcon.Blank());
         }
     }
