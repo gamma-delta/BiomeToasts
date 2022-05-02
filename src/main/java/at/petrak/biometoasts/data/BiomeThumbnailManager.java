@@ -41,14 +41,13 @@ public class BiomeThumbnailManager extends SimplePreparableReloadListener<Map<Re
     @Override
     protected Map<ResourceLocation, BiomeThumbnail> prepare(ResourceManager recman,
         ProfilerFiller pProfiler) {
-        var out  = new HashMap<ResourceLocation, BiomeThumbnail>();
+        var out = new HashMap<ResourceLocation, BiomeThumbnail>();
         try {
-            for (var resource : recman.getResources(FILE_LOCATION))
-            {
+            for (var resource : recman.getResources(FILE_LOCATION)) {
                 try (
                     var stream = resource.getInputStream();
                     var reader = new InputStreamReader(stream, StandardCharsets.UTF_8)
-                    ) {
+                ) {
                     try {
                         var json = GsonHelper.parse(reader);
 
@@ -60,7 +59,8 @@ public class BiomeThumbnailManager extends SimplePreparableReloadListener<Map<Re
                             out.put(key, thumb);
                         }
                     } catch (RuntimeException exn) {
-                        BiomeToastsMod.LOGGER.warn("Invalid biometoasts:thumbnails.json in resourcepack: '{}'", resource.getSourceName(), exn);
+                        BiomeToastsMod.LOGGER.warn("Invalid biometoasts:thumbnails.json in resourcepack: '{}'",
+                            resource.getSourceName(), exn);
                     }
                 }
             }

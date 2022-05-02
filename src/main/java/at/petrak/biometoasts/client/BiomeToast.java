@@ -9,9 +9,6 @@ import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
 
 public record BiomeToast(BiomeThumbnail thumbnail) implements Toast {
     public static final String KEY_TITLE = BiomeToastsMod.MOD_ID + ".toast.generic";
@@ -28,8 +25,7 @@ public record BiomeToast(BiomeThumbnail thumbnail) implements Toast {
         ps.translate(8, 8, 1);
         thumbnail.icon().draw(ps, pToastComponent, pTimeSinceLastVisible);
         ps.popPose();
-
-
+        
         var biome = thumbnail.biomeName();
         String biomeKey = "biome." + biome.getNamespace() + "." + biome.getPath();
         var subtitle = new TranslatableComponent(KEY_SUBTITLE, new TranslatableComponent(biomeKey));
