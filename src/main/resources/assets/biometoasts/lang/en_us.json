@@ -1,5 +1,7 @@
 {
     "biometoasts.toast.generic": "Biome Entered",
     "biometoasts.toast.subtitle": "%s",
-    "biometoasts.alticons": "Item Icons for Biome Toasts"
+    "biometoasts.alticons": "Item Icons for Biome Toasts",
+
+    "structure.village": "Village"
 }

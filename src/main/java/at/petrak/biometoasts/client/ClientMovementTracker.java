@@ -10,23 +10,29 @@ import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class MovementTracker {
+public class ClientMovementTracker {
     // very classy
     @OnlyIn(Dist.CLIENT)
     private static Biome LAST_BIOME = null;
+
+    // this is synced from the server
+    @OnlyIn(Dist.CLIENT)
+    private static ResourceLocation LAST_STRUCTURE = null;
 
     @SubscribeEvent
     public static void biomeChange(TickEvent.ClientTickEvent evt) {
         var mc = Minecraft.getInstance();
         var player = mc.player;
         var world = mc.level;
-        if (player == null || world == null) return;
+        if (player == null || world == null) {
+            return;
+        }
 
         Biome biome = world.getBiome(player.blockPosition()).value();
         var biomeID = biome.getRegistryName();
         if (LAST_BIOME == null || !LAST_BIOME.getRegistryName().equals(biomeID)) {
             LAST_BIOME = biome;
-            BiomeThumbnail thumbnail = BiomeToastsMod.THUMBNAIL_MANAGER.getThumbnail(biome);
+            var thumbnail = BiomeToastsMod.THUMBNAIL_MANAGER.getBiomeThumbnail(biome);
             mc.getToasts().addToast(new BiomeToast(thumbnail));
         }
     }

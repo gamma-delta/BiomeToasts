@@ -1,7 +1,6 @@
-package at.petrak.biometoasts.client.icon;
+package at.petrak.biometoasts.client;
 
 import at.petrak.biometoasts.BiomeToastsMod;
-import at.petrak.biometoasts.client.RenderHelper;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.brigadier.StringReader;

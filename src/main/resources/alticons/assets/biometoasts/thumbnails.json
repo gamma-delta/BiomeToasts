@@ -1,5 +1,5 @@
 {
-    "thumbnails": {
+    "biomes": {
         "comment": "Standard biomes",
         "minecraft:plains": "minecraft:grass_block",
         "minecraft:desert": "minecraft:cactus",

@@ -1,10 +1,9 @@
 package at.petrak.biometoasts;
 
-import at.petrak.biometoasts.client.MovementTracker;
+import at.petrak.biometoasts.client.ClientMovementTracker;
 import at.petrak.biometoasts.data.BiomeThumbnailManager;
+import at.petrak.biometoasts.server.ServerMovementTracker;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -14,7 +13,6 @@ import net.minecraft.server.packs.repository.PackSource;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -40,7 +38,9 @@ public class BiomeToastsMod {
         var evBus = MinecraftForge.EVENT_BUS;
 
         modBus.register(BiomeToastsMod.class);
-        evBus.register(MovementTracker.class);
+
+        evBus.register(ClientMovementTracker.class);
+        evBus.register(ServerMovementTracker.class);
     }
 
     public static ResourceLocation modLoc(String path) {
@@ -61,8 +61,7 @@ public class BiomeToastsMod {
                 var resourcePath = modFile.findResource("alticons");
                 var pack = new PathResourcePack(modFile.getFileName() + ":" + resourcePath, resourcePath);
                 var metadataSection = pack.getMetadataSection(PackMetadataSection.SERIALIZER);
-                if (metadataSection != null)
-                {
+                if (metadataSection != null) {
                     evt.addRepositorySource((packConsumer, packConstructor) ->
                         packConsumer.accept(packConstructor.create(
                             "builtin/" + MOD_ID, new TranslatableComponent("biometoasts.alticons"), false,

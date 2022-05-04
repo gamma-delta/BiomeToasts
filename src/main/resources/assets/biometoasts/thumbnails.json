@@ -1,5 +1,5 @@
 {
-    "thumbnails": {
+    "biomes": {
         "minecraft:badlands": "biometoasts:textures/badlands.png",
         "minecraft:basalt_deltas": "biometoasts:textures/basalt_deltas.png",
         "minecraft:beach": "biometoasts:textures/beach.png",
